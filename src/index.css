@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ————————————————————————————————————————————————
+   FLEXFITS · FORGED — molten-orange × cockpit HUD
+   DNA: Forged iron (black/molten orange) · CarPanel
+   (HUD telemetry) · Help-main (editorial serif)
+   ———————————————————————————————————————————————— */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-elevated: var(--elevated);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+  --font-accent: var(--font-accent);
+}
+
+/* Dark-first tokens (light mode intentionally mirrors dark) */
+:root {
+  --radius: 0.625rem;
+  --background: #080808;
+  --foreground: #f5f5f5;
+  --card: #111111;
+  --card-foreground: #f5f5f5;
+  --elevated: #181818;
+  --popover: #141414;
+  --popover-foreground: #f5f5f5;
+  --primary: #ff5a1f;
+  --primary-foreground: #080808;
+  --primary-deep: #c2410c;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #e8e8e8;
+  --muted: #161616;
+  --muted-foreground: #9a9a9a;
+  --accent: #1e1e1e;
+  --accent-foreground: #f5f5f5;
+  --success: #2fae64;
+  --warning: #d9a514;
+  --destructive: #d64545;
+  --destructive-foreground: #f5f5f5;
+  --border: #262626;
+  --input: #2c2c2c;
+  --ring: #ff5a1f;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-accent: "Instrument Serif", Georgia, serif;
+}
+
+.dark {
+  --background: #080808;
+  --foreground: #f5f5f5;
+  --card: #111111;
+  --card-foreground: #f5f5f5;
+  --elevated: #181818;
+  --popover: #141414;
+  --popover-foreground: #f5f5f5;
+  --primary: #ff5a1f;
+  --primary-foreground: #080808;
+  --primary-deep: #c2410c;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #e8e8e8;
+  --muted: #161616;
+  --muted-foreground: #9a9a9a;
+  --accent: #1e1e1e;
+  --accent-foreground: #f5f5f5;
+  --success: #2fae64;
+  --warning: #d9a514;
+  --destructive: #d64545;
+  --destructive-foreground: #f5f5f5;
+  --border: #262626;
+  --input: #2c2c2c;
+  --ring: #ff5a1f;
+}
+
+@layer base {
+  /* Vertical-only page: clip (not hidden) so sticky/pinned stages keep working */
+  html,
+  body {
+    overflow-x: clip;
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  ::selection {
+    background: rgba(255, 90, 31, 0.35);
+    color: #f5f5f5;
+  }
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+  /* Molten scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2c2c2c;
+    border-radius: 8px;
+    border: 2px solid #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff5a1f;
+  }
+}
+
+/* ————— Shared vocabulary (Help-main / CarPanel / Crystal) ————— */
+
+/* Mono eyebrow label, e.g. "01 — PROGRAMS" */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Serif-italic molten accent word inside display headlines */
+@utility display-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--primary);
+  letter-spacing: 0;
+}
+
+/* Mono telemetry chip (CarPanel conn-bar / Help-main hud-pill) */
+@utility hud-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  background: #111111;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+/* Pulsing live dot */
+@utility live-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--success);
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    border: 1.5px solid var(--success);
+    opacity: 0.7;
+    animation: live-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@utility live-dot-gold {
+  background: var(--primary);
+
+  &::after {
+    border-color: var(--primary);
+    animation: live-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(150%);
+  }
+}
+
+@keyframes live-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Tactile press on every CTA */
+@utility pressable {
+  transition:
+    transform 120ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Flat hairline rule */
+@utility gold-rule {
+  border: 0;
+  height: 1px;
+  background: #2c2c2c;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer components {
+  .container {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

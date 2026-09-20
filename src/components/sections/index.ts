@@ -1,0 +1,9 @@
+export { default as Hero } from './Hero';
+export { default as Stats } from './Stats';
+export { default as Services } from './Services';
+export { default as Exercises } from './Exercises';
+export { default as About } from './About';
+export { default as Trainers } from './Trainers';
+export { default as Pricing } from './Pricing';
+export { default as Reviews } from './Reviews';
+export { default as Contact } from './Contact';
