@@ -110,7 +110,7 @@ export default function Pricing() {
                 custom={i}
                 className={cn(
                   'relative flex flex-col overflow-hidden rounded-[10px] border bg-card p-8 transition-colors',
-                  plan.popular ? 'border-primary/70 shadow-[0_0_50px_rgba(255,90,31,0.12)]' : 'border-[#222] hover:border-[#3a3a3a]',
+                  plan.popular ? 'border-primary/70 shadow-[0_0_50px_rgba(236,102,54,0.12)]' : 'border-[#222] hover:border-[#3a3a3a]',
                 )}
               >
                 {plan.popular && (

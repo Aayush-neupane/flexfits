@@ -60,7 +60,7 @@ export default function Gauge({ label, value, sub }: GaugeProps) {
         <path
           d={arc(-90, -90 + (display / 100) * 180, 78)}
           fill="none"
-          stroke="#ff5a1f"
+          stroke="#ec6636"
           strokeWidth="7"
           strokeLinecap="round"
         />
@@ -91,7 +91,7 @@ export default function Gauge({ label, value, sub }: GaugeProps) {
           strokeWidth="2"
           strokeLinecap="round"
         />
-        <circle cx="100" cy="100" r="5" fill="#ff5a1f" />
+        <circle cx="100" cy="100" r="5" fill="#ec6636" />
       </svg>
       <p className="tabular mt-2 font-mono text-4xl font-semibold text-foreground">
         {display}

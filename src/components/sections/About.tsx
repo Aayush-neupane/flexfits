@@ -116,7 +116,7 @@ export default function About() {
               <button
                 type="button"
                 onClick={() => openTrial()}
-                className="pressable inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary transition-colors hover:text-[#ff7043]"
+                className="pressable inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary transition-colors hover:text-[#f07f4e]"
               >
                 Start with a free class
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

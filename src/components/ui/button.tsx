@@ -18,7 +18,7 @@ const buttonClasses = (
   cn(
     'pressable inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[13px] font-semibold uppercase tracking-[0.08em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
     {
-      'bg-primary text-primary-foreground hover:bg-[#ff7043] hover:shadow-[0_8px_24px_rgba(255,90,31,0.25)]':
+      'bg-primary text-primary-foreground hover:bg-[#f07f4e] hover:shadow-[0_8px_24px_rgba(236,102,54,0.25)]':
         variant === 'default' || variant === 'gradient',
       'bg-destructive text-destructive-foreground hover:bg-destructive/90': variant === 'destructive',
       'border border-[#333] bg-transparent text-[#d4d4d4] hover:bg-[#1a1a1a] hover:border-[#444] hover:text-foreground': variant === 'outline',

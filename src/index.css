@@ -52,9 +52,9 @@
   --elevated: #181818;
   --popover: #141414;
   --popover-foreground: #f5f5f5;
-  --primary: #ff5a1f;
+  --primary: #ec6636;
   --primary-foreground: #080808;
-  --primary-deep: #c2410c;
+  --primary-deep: #b7502b;
   --secondary: #1c1c1c;
   --secondary-foreground: #e8e8e8;
   --muted: #161616;
@@ -67,7 +67,7 @@
   --destructive-foreground: #f5f5f5;
   --border: #262626;
   --input: #2c2c2c;
-  --ring: #ff5a1f;
+  --ring: #ec6636;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -82,9 +82,9 @@
   --elevated: #181818;
   --popover: #141414;
   --popover-foreground: #f5f5f5;
-  --primary: #ff5a1f;
+  --primary: #ec6636;
   --primary-foreground: #080808;
-  --primary-deep: #c2410c;
+  --primary-deep: #b7502b;
   --secondary: #1c1c1c;
   --secondary-foreground: #e8e8e8;
   --muted: #161616;
@@ -97,7 +97,7 @@
   --destructive-foreground: #f5f5f5;
   --border: #262626;
   --input: #2c2c2c;
-  --ring: #ff5a1f;
+  --ring: #ec6636;
 }
 
 @layer base {
@@ -114,7 +114,7 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   ::selection {
-    background: rgba(255, 90, 31, 0.35);
+    background: rgba(236, 102, 54, 0.35);
     color: #f5f5f5;
   }
   section[id] {
@@ -133,7 +133,7 @@
     border: 2px solid #0a0a0a;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #ff5a1f;
+    background: #ec6636;
   }
 }
 

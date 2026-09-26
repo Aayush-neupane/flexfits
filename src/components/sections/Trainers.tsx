@@ -66,7 +66,7 @@ export default function Trainers() {
               custom={i}
               whileHover={{ y: -5 }}
               transition={{ duration: 0.25 }}
-              className="group rounded-[10px] border border-[#222] bg-card p-7 transition-colors hover:border-primary/60 hover:shadow-[0_16px_40px_rgba(255,90,31,0.1)]"
+              className="group rounded-[10px] border border-[#222] bg-card p-7 transition-colors hover:border-primary/60 hover:shadow-[0_16px_40px_rgba(236,102,54,0.1)]"
             >
               <div className="flex items-center justify-between">
                 <span

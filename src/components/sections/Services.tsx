@@ -80,7 +80,7 @@ export default function Services() {
               key={p.id}
               variants={fadeUp}
               custom={i % 3}
-              whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(255,90,31,0.12)' }}
+              whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(236,102,54,0.12)' }}
               transition={{ duration: 0.25 }}
               className="group relative overflow-hidden rounded-[10px] border border-[#222] bg-card p-7 transition-colors hover:border-primary/60"
             >
@@ -121,7 +121,7 @@ export default function Services() {
           <button
             type="button"
             onClick={() => openTrial()}
-            className="pressable inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary transition-colors hover:text-[#ff7043]"
+            className="pressable inline-flex shrink-0 items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary transition-colors hover:text-[#f07f4e]"
           >
             Book free class
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

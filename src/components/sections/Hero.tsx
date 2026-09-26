@@ -61,7 +61,7 @@ export default function Hero() {
       gsap.set(frameRef.current, { width: '100vw', height: '100vh', borderRadius: 0 });
       gsap.set(scrimRef.current, { opacity: 0.68 });
       gsap.set(layerARef.current, { opacity: 0 });
-      gsap.set(starRefs.current, { color: '#ff5a1f' });
+      gsap.set(starRefs.current, { color: '#ec6636' });
       gsap.set(miniRef.current, { opacity: 1, y: 0 });
       gsap.set(line1Ref.current, { opacity: 1, y: 0 });
       gsap.set(line2Ref.current, { opacity: 1 });
@@ -103,8 +103,8 @@ export default function Hero() {
         .to(
           starRefs.current,
           {
-            color: '#ff5a1f',
-            textShadow: '0 0 18px rgba(255,90,31,0.65)',
+            color: '#ec6636',
+            textShadow: '0 0 18px rgba(236,102,54,0.65)',
             duration: 0.05,
             stagger: 0.055,
           },
@@ -171,7 +171,7 @@ export default function Hero() {
         <div className="relative z-10 mx-auto grid w-full max-w-6xl flex-1 place-items-center px-5 sm:px-8">
           {/* LAYER A — opening: motto + igniting stars, sized to hold the frame */}
           <div ref={layerARef} className="col-start-1 row-start-1 w-full px-2 text-center">
-            <p className="text-sm font-semibold tracking-[0.2em] text-primary indent-[0.2em] [text-shadow:0_0_28px_rgba(255,90,31,0.4)] sm:text-base sm:tracking-[0.3em] sm:indent-[0.3em]">
+            <p className="text-sm font-semibold tracking-[0.2em] text-primary indent-[0.2em] [text-shadow:0_0_28px_rgba(236,102,54,0.4)] sm:text-base sm:tracking-[0.3em] sm:indent-[0.3em]">
               DISCIPLINE.&nbsp;&nbsp;STRENGTH.&nbsp;&nbsp;RESULTS.
             </p>
             <p aria-hidden="true" className="mt-5 flex items-center justify-center gap-5">
