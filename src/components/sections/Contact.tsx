@@ -13,6 +13,7 @@ import { getGymStatus } from '@/lib/gym-status';
 import { scrollToId } from '@/lib/scroll';
 import { fadeUp, staggerParent } from '@/components/common/motion';
 import { toast } from 'react-hot-toast';
+import { contactSchema, sendLead } from '@/lib/leads';
 
 const ROWS = [
   { k: 'Visit', v: 'ShivaSatakshi-1, Jhapa', href: 'https://maps.google.com/?q=Shivasatakshi+Jhapa', external: true },
@@ -29,9 +30,18 @@ export default function Contact() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const parsed = contactSchema.safeParse(form);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? 'Please check the form.');
+      return;
+    }
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    const res = await sendLead(`Website message from ${parsed.data.name}`, parsed.data);
     setSending(false);
+    if (!res.ok) {
+      toast.error(res.error, { duration: 6000 });
+      return;
+    }
     setForm({ name: '', email: '', message: '' });
     toast.success('Message received — we reply within a day.');
   };

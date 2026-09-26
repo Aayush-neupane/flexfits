@@ -18,7 +18,7 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           motion: ['framer-motion', 'gsap', 'lenis'],
           ui: ['lucide-react', 'clsx', 'tailwind-merge'],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+          forms: ['zod'],
         },
       },
     },

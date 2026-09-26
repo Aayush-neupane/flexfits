@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
+import { sendLead, trialSchema } from '@/lib/leads';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -37,6 +38,7 @@ export function TrialProvider({ children }: { children: ReactNode }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
 
   const openTrial = useCallback((planId?: string, billingPeriod?: Billing) => {
@@ -52,16 +54,30 @@ export function TrialProvider({ children }: { children: ReactNode }) {
   }, [sending]);
 
   const submit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
-      if (!name.trim() || !phone.trim()) return;
+      const parsed = trialSchema.safeParse({ name, phone, plan, billing, goal });
+      if (!parsed.success) {
+        setFormError(parsed.error.issues[0]?.message ?? 'Please check the form.');
+        return;
+      }
       setSending(true);
-      window.setTimeout(() => {
-        setReference(`FF-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
-        setSending(false);
-      }, 1100);
+      setFormError(null);
+      const res = await sendLead(`Free class request — ${plan} (${billing})`, {
+        name: parsed.data.name,
+        phone: parsed.data.phone,
+        plan: parsed.data.plan,
+        billing: parsed.data.billing,
+        goal: parsed.data.goal,
+      });
+      setSending(false);
+      if (!res.ok) {
+        setFormError(res.error);
+        return;
+      }
+      setReference(`FF-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
     },
-    [name, phone],
+    [name, phone, plan, billing, goal],
   );
 
   const value = useMemo(() => ({ openTrial }), [openTrial]);
@@ -236,6 +252,11 @@ export function TrialProvider({ children }: { children: ReactNode }) {
                     <Button type="submit" size="lg" className="w-full" loading={sending}>
                       {sending ? 'Reserving…' : 'Reserve my free class'}
                     </Button>
+                    {formError && (
+                      <p role="alert" className="text-center text-sm text-red-400">
+                        {formError}
+                      </p>
+                    )}
                     <p className="text-center font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                       No card · No commitment · Cancel anytime
                     </p>
